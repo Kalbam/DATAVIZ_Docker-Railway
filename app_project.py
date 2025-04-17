@@ -102,7 +102,7 @@ tabs = [
     dcc.Tab(label='4. Objetivos y Justificación', children=[
         html.H2('Objetivos y Justificación'),
         html.H4('Objetivo General'),
-        html.Ul([html.Li('[Objetivo general del proyecto]')]),
+        html.Ul([html.Li('Objetivo general del proyecto')]),
         html.H4('Objetivos Específicos'),
         html.Ul([
             html.Li('Objetivo específico 1'),
