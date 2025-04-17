@@ -5,16 +5,16 @@ import dash_bootstrap_components as dbc
 import os
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app.title = "Dashboard del Proyecto - Entregable #3"
-server = app.server  # Esto permite a Gunicorn acceder a la app correctamente
+app.title = "Dashboard del Proyecto Final-"
+server = app.server  
 
-# Subpestañas para Metodología
+
 subtabs_metodologia = dcc.Tabs([
     dcc.Tab(label='a. Definición del Problema', children=[
         html.H4('a. Definición del Problema a Resolver'),
         html.Ul([
             html.Li('Tipo de problema: clasificación / regresión / agrupamiento / series de tiempo'),
-            html.Li('Variable objetivo o de interés: [Nombre de la variable]')
+            html.Li('Variable objetivo o de interés: ')
         ])
     ]),
     dcc.Tab(label='b. Preparación de Datos', children=[
@@ -42,7 +42,7 @@ subtabs_metodologia = dcc.Tabs([
     ])
 ])
 
-# Subpestañas para Resultados
+
 subtabs_resultados = dcc.Tabs([
     dcc.Tab(label='a. EDA', children=[
         html.H4('a. Análisis Exploratorio de Datos (EDA)'),
@@ -51,15 +51,30 @@ subtabs_resultados = dcc.Tabs([
             html.Li('Gráficos, distribuciones y correlaciones')
         ])
     ]),
-    dcc.Tab(label='b. Visualización del Modelo', children=[
-        html.H4('b. Visualización de Resultados del Modelo'),
+    subtabs_resultados = dcc.Tabs([
+    dcc.Tab(label='b. EDA', children=[
+        html.H4('a. Análisis Exploratorio de Datos (EDA)'),
+        html.Ul([
+            html.Li('Estadísticas descriptivas'),
+            html.Li('Gráficos, distribuciones y correlaciones')
+        ])
+    ]),
+    dcc.Tab(label='c. Visualización de los Modelos', children=[
+        html.H4('c. Visualización de Resultados del Modelo'),
         html.Ul([
             html.Li('Gráficas de comparación: valores reales vs. predichos'),
             html.Li('Análisis de residuales')
         ])
     ]),
-    dcc.Tab(label='c. Limitaciones', children=[
-        html.H4('c. Limitaciones y Consideraciones Finales'),
+    dcc.Tab(label='d. Indicadores de Evalación', children=[
+        html.H4('d. Visualización de Resultados del Modelo'),
+        html.Ul([
+            html.Li('Tabla de errores: RMSE-MAE-MSE.. valores reales vs. predichos '),
+            html.Li('Análisis de residuales')
+        ])
+    ]),
+    dcc.Tab(label='D. Limitaciones', children=[
+        html.H4('D. Limitaciones y Consideraciones Finales'),
         html.Ul([
             html.Li('Restricciones del análisis'),
             html.Li('Posibles mejoras futuras')
@@ -67,7 +82,7 @@ subtabs_resultados = dcc.Tabs([
     ])
 ])
 
-# Lista de pestañas principales
+
 tabs = [
     dcc.Tab(label='1. Introducción', children=[
         html.H2('Introducción'),
