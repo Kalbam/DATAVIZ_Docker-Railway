@@ -2,11 +2,12 @@ import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-
+import os
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "Dashboard del Proyecto - Entregable #3"
-server = app.server
+server = app.server  # Esto permite a Gunicorn acceder a la app correctamente
+
 # Lista de pestañas con contenido correspondiente
 tabs = [
     dcc.Tab(label='1. Introducción', children=[
@@ -104,4 +105,5 @@ app.layout = dbc.Container([
 ], fluid=True)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get('PORT', 8050))
+    app.run_server(debug=False, host="0.0.0.0", port=port)
