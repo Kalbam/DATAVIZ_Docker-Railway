@@ -5,16 +5,16 @@ import dash_bootstrap_components as dbc
 import os
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app.title = "Dashboard del Proyecto - Entregable #3"
-server = app.server  # Esto permite a Gunicorn acceder a la app correctamente
+app.title = "Dashboard del Proyecto Final "
+server = app.server  
 
-# Subpestañas para Metodología
+
 subtabs_metodologia = dcc.Tabs([
     dcc.Tab(label='a. Definición del Problema', children=[
         html.H4('a. Definición del Problema a Resolver'),
         html.Ul([
             html.Li('Tipo de problema: clasificación / regresión / agrupamiento / series de tiempo'),
-            html.Li('Variable objetivo o de interés: [Nombre de la variable]')
+            html.Li('Variable objetivo o de interés: Nombre de la variable')
         ])
     ]),
     dcc.Tab(label='b. Preparación de Datos', children=[
@@ -42,7 +42,7 @@ subtabs_metodologia = dcc.Tabs([
     ])
 ])
 
-# Subpestañas para Resultados
+
 subtabs_resultados = dcc.Tabs([
     dcc.Tab(label='a. EDA', children=[
         html.H4('a. Análisis Exploratorio de Datos (EDA)'),
@@ -51,15 +51,27 @@ subtabs_resultados = dcc.Tabs([
             html.Li('Gráficos, distribuciones y correlaciones')
         ])
     ]),
-    dcc.Tab(label='b. Visualización del Modelo', children=[
-        html.H4('b. Visualización de Resultados del Modelo'),
+    dcc.Tab(label='b. EDA 2', children=[
+        html.H4('b. EDA 2 - Análisis adicional'),
+        html.P('Aquí puedes incluir análisis exploratorios complementarios como segmentaciones, boxplots, histogramas comparativos o mapas si aplica.')
+    ]),
+    dcc.Tab(label='c. Visualización del Modelo', children=[
+        html.H4('c. Visualización de Resultados del Modelo'),
+        html.P('Aquí se mostrarán las métricas de evaluación de los modelos en forma de tabla.'),
         html.Ul([
             html.Li('Gráficas de comparación: valores reales vs. predichos'),
             html.Li('Análisis de residuales')
         ])
     ]),
-    dcc.Tab(label='c. Limitaciones', children=[
-        html.H4('c. Limitaciones y Consideraciones Finales'),
+    dcc.Tab(label='d. Indicadores del Modelo', children=[
+        html.H4('d. Indicadores de Evaluación del Modelo'),
+        html.Ul([
+            html.Li(' Tabla de errores: RMSE, MAE, MSE, etc.'),
+            html.Li(' Interpretación de los valores para comparar modelos')
+        ])
+    ]),
+    dcc.Tab(label='e. Limitaciones', children=[
+        html.H4('e. Limitaciones y Consideraciones Finales'),
         html.Ul([
             html.Li('Restricciones del análisis'),
             html.Li('Posibles mejoras futuras')
@@ -67,19 +79,19 @@ subtabs_resultados = dcc.Tabs([
     ])
 ])
 
-# Lista de pestañas principales
+
 tabs = [
     dcc.Tab(label='1. Introducción', children=[
         html.H2('Introducción'),
-        html.P('Bienvenidos al Dashboard del proyecto. Aquí se presenta una visión general de la problemática, el análisis realizado y los hallazgos encontrados.'),
-        html.P('Objetivo general: Presentar los resultados del análisis aplicado a una base de datos específica mediante técnicas estadísticas y de machine learning.')
+        html.P('Aquí se presenta una visión general del contexto de la problemática, el análisis realizado y los hallazgos encontrados.'),
+        html.P('De manera resumida, indicar lo que se pretende lograr con el proyecto')
     ]),
     dcc.Tab(label='2. Contexto', children=[
         html.H2('Contexto'),
         html.P('Descripción breve del contexto del proyecto.'),
         html.Ul([
-            html.Li('Fuente de los datos: [Nombre de la fuente]'),
-            html.Li('Variables de interés: [listar variables]')
+            html.Li('Fuente de los datos: Nombre de la fuente'),
+            html.Li('Variables de interés: listar variables-operacionalización')
         ])
     ]),
     dcc.Tab(label='3. Planteamiento del Problema', children=[
@@ -102,7 +114,7 @@ tabs = [
     ]),
     dcc.Tab(label='5. Marco Teórico', children=[
         html.H2('Marco Teórico'),
-        html.P('Resumen de conceptos teóricos clave relacionados con el proyecto. Se pueden incluir referencias o citas.')
+        html.P('Resumen de conceptos teóricos (definiciones formales) claves relacionados con el proyecto. Se pueden incluir referencias o citas.')
     ]),
     dcc.Tab(label='6. Metodología', children=[
         html.H2('Metodología'),
@@ -115,16 +127,16 @@ tabs = [
     dcc.Tab(label='8. Conclusiones', children=[
         html.H2('Conclusiones'),
         html.Ul([
-            html.Li('Principales hallazgos del proyecto'),
+            html.Li('Listar los principales hallazgos del proyecto'),
             html.Li('Relevancia de los resultados obtenidos'),
             html.Li('Aplicaciones futuras y recomendaciones')
         ])
     ])
 ]
 
-# Layout del dashboard
+
 app.layout = dbc.Container([
-    html.H1("Dashboard del Proyecto - Entregable #3", className="text-center my-4"),
+    html.H1("Dashboard del Proyecto Final ", className="text-center my-4"),
     dcc.Tabs(tabs)
 ], fluid=True)
 
