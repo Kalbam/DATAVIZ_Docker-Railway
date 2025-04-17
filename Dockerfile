@@ -1,17 +1,17 @@
+# Imagen base
 FROM python:3.10-slim
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
+# Establecer directorio de trabajo
 WORKDIR /app
 
+# Copiar archivos
 COPY . .
-COPY pages ./pages
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Instalar dependencias
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8501
+# Puerto de exposición
+EXPOSE 8080
 
-ENTRYPOINT ["streamlit", "run"]
-CMD ["app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Comando de inicio
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app_project:app"]
